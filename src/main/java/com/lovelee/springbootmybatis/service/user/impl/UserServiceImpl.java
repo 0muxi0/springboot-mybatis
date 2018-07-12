@@ -35,4 +35,14 @@ public class UserServiceImpl implements UserService {
         PageInfo result = new PageInfo(userDomains);
         return result;
     }
+
+    @Override
+    public void deleteUser(int id) {
+        userDao.delete(id);
+    }
+
+    @Override
+    public void updateUserById(UserDomain user) {
+        userDao.updateUserById(user);
+    }
 }

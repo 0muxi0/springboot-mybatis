@@ -8,4 +8,8 @@ public interface UserDao {
     int insert(UserDomain record);
 
     List<UserDomain> selectUsers();
+
+    int delete(int id);
+
+    int updateUserById(UserDomain user);
 }

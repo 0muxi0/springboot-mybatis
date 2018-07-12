@@ -33,5 +33,24 @@
         <include refid="BASE_TABLE"/>
     </select>
 
+    <delete id="delete" parameterType="int">
+        delete from <include refid="BASE_TABLE"/> where userId=#{id, jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateUserById" parameterType="com.lovelee.springbootmybatis.model.UserDomain">
+        update <include refid="BASE_TABLE"/>
+        <set>
+            <if test="userName != null">
+                userName = #{userName, jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password, jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone, jdbcType=VARCHAR},
+            </if>
+        </set>
+        where userId = #{userId, jdbcType=INTEGER}
+    </update>
 
 </mapper>
