@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lovelee.springbootmybatis.dao.miniHotweiboDao" >
+    <sql id="BASE_TABLE">
+    t_mini_weibo_hot
+  </sql>
+
+    <sql id="BASE_COLUMN">
+    id,username,links,content
+  </sql>
+
+    <insert id="insert" parameterType="com.lovelee.springbootmybatis.model.miniHotweibo">
+        INSERT INTO
+        <include refid="BASE_TABLE"/>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            #{username, jdbcType=VARCHAR},#{links, jdbcType=VARCHAR},
+            <if test="content != null">
+                #{content, jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>
